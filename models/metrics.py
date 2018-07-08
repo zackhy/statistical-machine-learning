@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-from sklearn.metrics import confusion_matrix as conm
 
 def confusion_matrix(y_true, y_pred):
     """
