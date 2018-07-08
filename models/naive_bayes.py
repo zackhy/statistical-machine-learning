@@ -1,11 +1,12 @@
+# -*- coding: utf-8 -*-
 import numpy as np
-from models.base import Base, fitted_check, input_check
+from models.base import Base
+from models.utils import input_check, target_check, fitted_check
 
 
 class BernoulliNB(Base):
     """Bernoulli Naive Bayes Classifier that implements the fit(X, y) and predict(T) methods"""
 
-    @input_check
     def fit(self, X, y):
         """
         Fit the Bernoulli Naive Bayes Classifier with input data X and target y
@@ -13,6 +14,8 @@ class BernoulliNB(Base):
         :param y: Target. An array-like object. Shape = (n_samples, )
         :return: The fitted Bernoulli Naive Bayes Classifier
         """
+        X = input_check(X)
+        y = target_check(y)
         if np.min(X) < 0:
             raise ValueError('Input features should be greater than or equal to 0')
 
@@ -43,10 +46,7 @@ class BernoulliNB(Base):
         :param X: Input data. An array-like object. Shape = (n_samples, n_features)
         :return: Predictions. A 1d numpy array. Shape = (n_samples, )
         """
-        if not isinstance(X, np.ndarray):
-            X = np.array(X)
-        if X.ndim != 2:
-            raise ValueError('Input T should be a 2d array')
+        X = input_check(X)
         if X.shape[1] != self.num_features_:
             raise ValueError('Input X should have a shape of (,{})'.format(self.num_features_))
 
@@ -64,7 +64,6 @@ class BernoulliNB(Base):
 class MultinomialNB(Base):
     """Multinomial Naive Bayes Classifier that implements the fit(X, y) and predict(T) methods"""
 
-    @input_check
     def fit(self, X, y):
         """
         Fit the Multinomial Naive Bayes Classifier with input data X and target y
@@ -72,6 +71,8 @@ class MultinomialNB(Base):
         :param y: Target. An array-like object. Shape = (n_samples, )
         :return: The fitted Multinomial Naive Bayes Classifier
         """
+        X = input_check(X)
+        y = target_check(y)
         if np.min(X) < 0:
             raise ValueError('Input features should be greater than or equal to 0')
 
@@ -103,10 +104,7 @@ class MultinomialNB(Base):
         :param X: Input data. An array-like object. Shape = (n_samples, n_features)
         :return: Predictions. A 1d numpy array. Shape = (n_samples, )
         """
-        if not isinstance(X, np.ndarray):
-            X = np.array(X)
-        if X.ndim != 2:
-            raise ValueError('Input X should be a 2d numpy array')
+        X = input_check(X)
         if X.shape[1] != self.num_features_:
             raise ValueError('Input X should have a shape of (?,{})'.format(self.num_features_))
 
