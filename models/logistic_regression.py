@@ -22,7 +22,6 @@ class LogisticRegression(Base):
         coef = np.zeros(n_features)
         intercept = 0
         loss = log_loss(sigmoid(np.matmul(X, coef) + intercept), y)
-        print(loss)
 
         # Stochastic gradient descent
         while self.max_iter > 0:
