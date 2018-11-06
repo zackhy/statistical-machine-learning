@@ -7,3 +7,5 @@ Implemented:
 1. Bernoulli Naive Bayes  
 
 2. Multinomial Naive Bayes  
+
+3. Logistic Regression  
