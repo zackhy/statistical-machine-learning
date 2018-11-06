@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import numpy as np
 from models.utils import input_check, target_check, fitted_check
 
 
